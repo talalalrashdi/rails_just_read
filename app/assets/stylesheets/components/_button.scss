@@ -1,0 +1,17 @@
+.search-background{
+background-image: linear-gradient(to right, #50C9C3 0%, #96DEDA  51%, #50C9C3  100%);
+padding: 0px 15px 0px  15px;
+text-align: center;
+transition: 0.5s;
+background-size: 200% auto;
+color: white;
+box-shadow: 0 0 20px #eee;
+border-radius: 8px;
+display: block;
+
+}
+.search-background:hover {
+  background-position: right center; /* change the direction of the change here */
+  color: #fff;
+  text-decoration: none;
+}
