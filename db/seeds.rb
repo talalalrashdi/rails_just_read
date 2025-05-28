@@ -27,17 +27,22 @@ image5 = URI.parse("https://res.cloudinary.com/dovux98py/image/upload/v174844413
 image6 = URI.parse("https://res.cloudinary.com/dovux98py/image/upload/v1748444138/Harry-Potter-and-the-Philosophers-Stone_cd8yyt.jpg").open
 
 # User
-puts "creating demo user..."
-user1 = User.create!(email: "example@mail.com", password: "123456", full_name: "Edgar Allan Poe", address: "Boston, Massachusetts, United States")
+puts "creating demo users..."
+user1 = User.create!(email: "example1@mail.com", password: "111111", full_name: "Edgar Allan Poe", address: "840 Summer St, South Boston, MA 02127, United States")
+user2 = User.create!(email: "example2@mail.com", password: "222222", full_name: "Ave Statham", address: "811 Massachusetts Ave, Boston, MA 02118, United States")
+user3 = User.create!(email: "example3@mail.com", password: "333333", full_name: "Broady Billow", address: "6 W Broadway, Boston, MA 02127, United States")
+user4 = User.create!(email: "example4@mail.com", password: "444444", full_name: "Claire Dendon", address: "206 Clarendon St, Boston, MA 02116, United States")
+user5 = User.create!(email: "example5@mail.com", password: "555555", full_name: "Maria Stuart", address: "420 D St, Boston, MA 02210, United States")
+user6 = User.create!(email: "example6@mail.com", password: "666666", full_name: "Charles Reed", address: "1005 Columbia Rd, Boston, MA 02127, United States")
 
 # Creating books
 puts "creating book instances..."
 book1 = Book.create(title: "Harry Potter: Chamber of Secrets", description: "School is finally back! Only someone whose holidays were awful could let out such a sigh: Harry Potter. But like last school year, there's more to the program than just Potions and Transfiguration. Something horrible is wreaking havoc in the school.", author: "Rowling J.K.", category: category2, user: user1)
-book2 = Book.create(title: "Harry Potter: Prisoner of Azkaban", description: "A spell with unexpected consequences. Of course, Harry knows that magic is strictly forbidden during the holidays, yet he casts a levitation spell on his horrible aunt.", author: "Rowling J.K.", category: category3, user: user1)
-book3 = Book.create(title: "Harry Potter: Goblet of Fire", description: "A magical tournament and Voldemort on the rise. Harry's fourth year at Hogwarts begins and a competition keeps the students on edge: the Triwizard Tournament, in which Harry takes on a role he could never have imagined.", author: "Rowling J.K.", category: category4, user: user1)
-book4 = Book.create(title: "Harry Potter: Order of the Phoenix", description: "Harry and his friends form up for battle. It's summer vacation, and once again Harry is stuck with the unspeakable Dursleys. But this time he's more worried than ever - why doesn't he learn anything about the dark forces that have recently arisen?", author: "Rowling J.K.", category: category5, user: user1)
-book5 = Book.create(title: "Harry Potter: Half-Blood Prince", description: "Voldemort's Dark Past. Since Voldemort, the most dangerous Dark wizard of all time, returned, unrest and violence have reigned in the magical world.", author: "Rowling J.K.", category: category6, user: user1)
-book6 = Book.create(title: "Harry Potter: Deathly Hallows", description: "The final battle between Harry and the Dark Lord. A return to Hogwarts is out of the question for Harry. He must do everything in his power to find the remaining Horcruxes. Only when they are destroyed can Voldemort's reign of terror end. ", author: "Rowling J.K.", category: category7, user: user1)
+book2 = Book.create(title: "Harry Potter: Prisoner of Azkaban", description: "A spell with unexpected consequences. Of course, Harry knows that magic is strictly forbidden during the holidays, yet he casts a levitation spell on his horrible aunt.", author: "Rowling J.K.", category: category3, user: user2)
+book3 = Book.create(title: "Harry Potter: Goblet of Fire", description: "A magical tournament and Voldemort on the rise. Harry's fourth year at Hogwarts begins and a competition keeps the students on edge: the Triwizard Tournament, in which Harry takes on a role he could never have imagined.", author: "Rowling J.K.", category: category4, user: user3)
+book4 = Book.create(title: "Harry Potter: Order of the Phoenix", description: "Harry and his friends form up for battle. It's summer vacation, and once again Harry is stuck with the unspeakable Dursleys. But this time he's more worried than ever - why doesn't he learn anything about the dark forces that have recently arisen?", author: "Rowling J.K.", category: category5, user: user4)
+book5 = Book.create(title: "Harry Potter: Half-Blood Prince", description: "Voldemort's Dark Past. Since Voldemort, the most dangerous Dark wizard of all time, returned, unrest and violence have reigned in the magical world.", author: "Rowling J.K.", category: category6, user: user5)
+book6 = Book.create(title: "Harry Potter: Deathly Hallows", description: "The final battle between Harry and the Dark Lord. A return to Hogwarts is out of the question for Harry. He must do everything in his power to find the remaining Horcruxes. Only when they are destroyed can Voldemort's reign of terror end. ", author: "Rowling J.K.", category: category7, user: user6)
 
 # Attaching images
 puts "attaching book covers to books..."
