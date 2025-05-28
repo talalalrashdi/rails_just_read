@@ -9,4 +9,7 @@ class Book < ApplicationRecord
   validates :author, presence: true
   validates_associated :category
 
+  # book cover / image upload
+  has_one_attached :photo
+
 end
