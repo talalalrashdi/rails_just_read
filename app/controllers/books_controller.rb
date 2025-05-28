@@ -7,7 +7,9 @@ class BooksController < ApplicationController
     @markers = @books.map do |book|
     {
       lat: book.user.latitude,
-      lng: book.user.longitude
+      lng: book.user.longitude,
+      info_window_html: render_to_string(partial: "info_window", locals: {book: book}),
+      marker_html: render_to_string(partial: "marker", locals: {book: book})
     }
     end
   end
