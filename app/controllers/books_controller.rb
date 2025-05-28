@@ -1,21 +1,19 @@
 class BooksController < ApplicationController
   def index
-  
+
     @books = Book.all
-    
+
     # The `geocoded` scope filters only books with coordinates
-    @markers = @books.geocoded.map do |book|
+    @markers = @books.map do |book|
     {
-      lat: flat.latitude,
-      lng: flat.longitude
+      lat: book.user.latitude,
+      lng: book.user.longitude
     }
     end
   end
-  
-  
 
   def show
-    @book = Bookk.new
+    @book = Book.new
     @review = Review.new(list: @list)
     @book = Book.find(params[:id])
   end
@@ -37,6 +35,5 @@ class BooksController < ApplicationController
 
   def list_params
     params.require(:book).permit(:title, :description, :author, :category, :user)
-
   end
 end
