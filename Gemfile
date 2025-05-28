@@ -75,7 +75,7 @@ group :test do
   gem "selenium-webdriver"
 end
 
-
+# airbnb project week
 gem "faker"
-
 gem "ostruct"
+gem "geocoder"
