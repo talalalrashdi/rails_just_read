@@ -15,5 +15,9 @@ class User < ApplicationRecord
   validates_associated :books
   validates_associated :requests
   validates_associated :reviews
-  
+
+  # geocoding
+  geocoded_by :address
+  after_validation :geocode, if: :will_save_change_to_address?
+
 end
