@@ -2,8 +2,15 @@ class BooksController < ApplicationController
   def index
 
     @books = Book.all
+
+    # returns result set if search query present
     if params[:query].present?
       @books = Book.search_by_title_description_author(params[:query])
+    end
+
+    # returns empty instance of books to populate category filter
+    if params[:category_id].present?
+      @books = @books.where(category_id: params[:category_id])
     end
 
     # The `geocoded` scope filters only books with coordinates

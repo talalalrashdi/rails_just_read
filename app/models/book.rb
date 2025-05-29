@@ -14,7 +14,7 @@ class Book < ApplicationRecord
 
   # multi-search
   include PgSearch::Model
-  multisearchable against: [:title, :description, :author]
+  # multisearchable against: [:title, :description, :author]
   pg_search_scope :search_by_title_description_author,
     against: [ :title, :description, :author ],
     using: {

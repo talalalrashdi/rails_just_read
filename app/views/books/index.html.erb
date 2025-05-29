@@ -19,16 +19,17 @@
 
       <input type="text" placeholder="area"  class="form-control w-25">
       <button type="button  " class="btn search-background">Search</button>
-      <div class="dropdown">
-        <a class="btn border dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-          Category
-        </a>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-          <li><a class="dropdown-item" href="#">Action</a></li>
-          <li><a class="dropdown-item" href="#">Another action</a></li>
-          <li><a class="dropdown-item" href="#">Something else here</a></li>
-        </ul>
-      </div>
+
+      <!-- START: category filter -->
+      <%= form_with url: books_path, method: :get, local: true do %>
+        <%= select_tag :category_id,
+            options_from_collection_for_select(Category.all, :id, :name, params[:category_id]),
+            prompt: "Select Category",
+            onchange: 'this.form.submit();'
+           %>
+      <% end %>
+      <!-- END: category filter -->
+
     </div>
 
     <h2 style="font-weight: bold;">Available books in your area</h2>
