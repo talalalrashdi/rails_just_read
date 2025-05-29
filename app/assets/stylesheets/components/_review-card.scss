@@ -1,0 +1,43 @@
+.review-background{
+
+  background-color: rgb(239, 239, 239);
+  border-radius: 8px;
+  width: 500px;
+  padding: 20px;
+
+
+}
+
+.review-padding-left{
+
+  padding-left: 10px;
+}
+
+.review-name{
+  margin: 0;
+  font-weight: bold;
+
+}
+
+.review-ratting{
+
+font-size: 13px;
+color: gray;
+}
+
+
+.scrolling-wrapper {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+
+  .card-review {
+    display: inline-block;
+  }
+}
+
+.text-card-warp{
+
+  overflow: auto;
+  text-wrap: auto;
+}
