@@ -1,7 +1,8 @@
 class PagesController < ApplicationController
-  def home
+  def profile
   end
 
-  def profile
+  def dashboard
+    p current_user
   end
 end
