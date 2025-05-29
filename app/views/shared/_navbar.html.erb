@@ -1,11 +1,11 @@
 <nav class="d-flex navbar navbar-light bg-light justify-content-between p-3 mb-4 shadow-sm">
   <a class="navbar-brand">
 
-   <%= image_tag("logo.png", width: "200", :alt => "rss feed") -%>
+   <%= link_to image_tag("logo.png", width: "200", :alt => "rss feed"),  root_path %>
   </a>
 
   <div class="ms-auto d-inline-flex align-middle ">
-    <a href="#">Log in</a>
+    <%= link_to "log in",  new_user_session_path , class:"btn-login" %>
     <p class="ms-4"> <b>hi,</b> Talal</p>
 
   </div>
