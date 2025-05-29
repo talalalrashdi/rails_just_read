@@ -1,0 +1,34 @@
+<div class="container">
+
+  <div class="row bg-light p-3 rounded-3">
+    <div class="col-auto ">
+        <%= image_tag "avatar.png", alt: "Le Wagon", width: 100 , :class => "rounded-circle" %>
+
+    </div>
+    <div class="col">
+      <p class="ratting-number-bold">Talal Alrashdi</p>
+      <p class="ratting-name-lighter">address</p>
+    </div>
+    <div class="col-auto">
+        <div class="rating-bckground text-center">
+            <p class="ratting-number-bold">contenet</p>
+            <p class="ratting-name-lighter">Ratting</p>
+        </div>
+    </div>
+  </div>
+
+
+  <h1 class="mt-5">Review</h1>
+
+  <div class="scrolling-wrapper">
+
+        <%= render "reviews/review-card"%>
+
+  </div>
+
+
+  <h1 class="mt-5">Books</h1>
+
+  <%= render "reviews/personal-book"%>
+
+</div>
