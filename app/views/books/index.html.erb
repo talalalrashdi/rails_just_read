@@ -1,36 +1,55 @@
 <div class="row">
-<div class="col p-4">
-  <div class="d-flex d-grid gap-1 pr-4 mb-5">
-    <input type="text" placeholder="Search" class="form-control">
-    <input type="text" placeholder="area"  class="form-control w-25">
-    <button type="button  " class="btn search-background">Search</button>
-          <div class="dropdown">
-          <a class="btn border dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-            Category
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
+  <div class="col p-4">
+    <div class="d-flex d-grid gap-1 pr-4 mb-5">
+
+      <!-- START: multi-search form -->
+      <div class="row justify-content-center">
+        <div class="col-sm-8 my-3">
+          <%= form_with url: books_path, method: :get, class: "d-flex" do %>
+            <%= text_field_tag :query,
+                  params[:query],
+                  class: "form-control",
+                  placeholder: "Search for a title, author, category or keyword"
+              %>
+            <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
+          <% end %>
         </div>
-  </div>
-
-  <h4>List of the books</h4>
-
-  <div class="index_grid">
-
-    <% @books.each do |book| %>
-    <div class="card" style="width: 15rem;">
-      <img src="https://m.media-amazon.com/images/I/617rPny7-LL.jpg" class="" alt="Book's image">
-      <div class="card-body">
-        <h5 class="card-title"><%= book.title %></h5>
-        <p class="card-text grey-color "> <%= book.description %></p>
       </div>
-    </div>
-    <% end %>
+      <!-- END: multi-search form -->
+
+      <input type="text" placeholder="area"  class="form-control w-25">
+      <button type="button  " class="btn search-background">Search</button>
+
+      <!-- START: category filter -->
+      <%= form_with url: books_path, method: :get, local: true do %>
+        <%= select_tag :category_id,
+            options_from_collection_for_select(Category.all, :id, :name, params[:category_id]),
+            prompt: "Select Category",
+            onchange: 'this.form.submit();'
+           %>
+      <% end %>
+      <!-- END: category filter -->
 
     </div>
+
+    <h2 style="font-weight: bold;">Available books in your area</h2>
+
+    <div class="index_grid">
+      <% if @books.any? %>
+        <% @books.each do |book| %>
+          <div class="card m-2" >
+            <%= cl_image_tag book.photo.key %>
+            <div class="card-body">
+              <h5 class="card-title"><%= book.title %></h5>
+              <p class="card-text grey-color "> <%= book.description %></p>
+            </div>
+          </div>
+        <% end %>
+      <% else %>
+        <em>Sorry, no books found.</em>
+      <% end %>
+    </div>
+
   </div>
 
   <div class="col bg-info"
@@ -39,5 +58,4 @@
     data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
 
-  </div>
 </div>

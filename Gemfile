@@ -80,3 +80,5 @@ end
 gem "faker"
 gem "ostruct"
 gem "geocoder"
+gem "cloudinary"
+gem "pg_search"
