@@ -4,7 +4,7 @@
   <%= link_to "Back to search", books_path, class: "link-body-emphasis link-offset-2 link-underline-opacity-25 link-underline-opacity-75-hover pb-2" %>
 
   <div class="col-8 show_index_grid show_card">
-    <img src="/assets/Harry-Potter-1-y-la-piedra-filosofal.jpg" class="img-holder" alt="Book's cover">
+    <%= cl_image_tag @book.photo.key, class: "img-holder" %>
     <div>
       <h3><%= @book.title %></h3>
       <h5><%= @book.author %></h5>
