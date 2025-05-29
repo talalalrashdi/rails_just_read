@@ -16,13 +16,13 @@
         </div>
   </div>
 
-  <h4>List of the book’s</h4>
+  <h4>List of the books</h4>
 
   <div class="index_grid">
 
     <% @books.each do |book| %>
     <div class="card" style="width: 15rem;">
-      <img src="https://m.media-amazon.com/images/I/617rPny7-LL.jpg" class="" alt="Book's image"></h5>
+      <img src="https://m.media-amazon.com/images/I/617rPny7-LL.jpg" class="" alt="Book's image">
       <div class="card-body">
         <h5 class="card-title"><%= book.title %></h5>
         <p class="card-text grey-color "> <%= book.description %></p>

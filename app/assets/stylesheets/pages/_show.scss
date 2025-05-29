@@ -1,0 +1,55 @@
+@import "home";
+
+.img-holder{
+  width: 450px;
+  margin-right: 20px;
+  background-color:beige;
+}
+
+.show_index_grid{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.show_card h3{
+  border-bottom-style: solid;
+  border-width: 0.6px;
+  border-color: gray;
+  padding-bottom: 15px;
+}
+
+.show_card h5{
+  border-bottom-style: solid;
+  border-width: 0.6px;
+  border-color: gray;
+  padding: 15px 0;
+}
+
+.show_card p{
+  padding: 15px 0;
+}
+
+.show_avatar{
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  justify-self: center;
+}
+
+.show_owner_card{
+  height: 200px;
+  margin-left: 20px;
+  align-items: center;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px;
+}
+
+.btn-my-color{
+  background-color:#9edcda;
+  margin-left: 10px;
+  width: 400px;
+  height: 80px;
+}
+
+.btn-my-color:hover{
+  background-color:#baeae8;
+}
