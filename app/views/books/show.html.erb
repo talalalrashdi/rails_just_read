@@ -14,16 +14,18 @@
 
   <div class="col">
     <div class="row g-3 h-100">
-      <div class="col-12 show_index_grid show_owner_card">
-      <div class="show_avatar">
-        <img src="/assets/Poe-Stange-2-L-Brandon-photo-e1500675667867.jpg" class="show_avatar" alt="Book's owner">
-      </div>
-      <div>
-        <h5><%= @book.user.full_name %></h5>
-        <h3>Rating</h3>
-        <h3 class="rating_index">3.8</h3>
-      </div>
-      </div>
+      <%= link_to profile_path(:id) do %>
+        <div class="col-12 show_index_grid show_owner_card">
+          <div class="show_avatar">
+            <img src="/assets/Poe-Stange-2-L-Brandon-photo-e1500675667867.jpg" class="show_avatar" alt="Book's owner">
+          </div>
+          <div class="show_owner_info">
+            <h5><%= @book.user.full_name %></h5>
+            <h3>Rating</h3>
+            <h3 class="rating_index">3.8</h3>
+          </div>
+        </div>
+      <% end %>
 
       <div class="col-12">
         <%= link_to "Borrow this book", dashboard_path, type: "button", class: "btn btn-my-color" %>
