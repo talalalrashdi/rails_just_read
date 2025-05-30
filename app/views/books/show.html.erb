@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
 
-  <%= link_to "Back to search", books_path, class: "link-body-emphasis link-offset-2 link-underline-opacity-25 link-underline-opacity-75-hover pb-2" %>
+    <%= link_to "Back to search", books_path, class: "link-body-emphasis link-offset-2 link-underline-opacity-25 link-underline-opacity-75-hover pb-2" %>
 
   <div class="col-8 show_index_grid show_card">
     <%= cl_image_tag @book.photo.key, class: "img-holder" %>
@@ -32,15 +32,33 @@
       </div>
     </div>
 
+    <div class="col">
+      <div class="row g-3 h-100">
+
+        <div class="col-12 show_index_grid show_owner_card">
+          <div class="show_avatar">
+            <img src="/assets/Poe-Stange-2-L-Brandon-photo-e1500675667867.jpg" class="show_avatar" alt="Book's owner">
+          </div>
+          <div>
+            <h5><%= @book.user.full_name %></h5>
+            <h3>Rating</h3>
+            <h3 class="rating_index">3.8</h3>
+          </div>
+        </div>
+
+        <div class="col-12">
+          <%= form_with url: request_create_path, method: :post, local: true do |f| %>
+            <%= hidden_field_tag :user_id, current_user.id %>
+            <%= hidden_field_tag :book_id, @book.id %>
+            <%= submit_tag "Borrow this book", class: "btn btn-my-color" %>
+          <% end %>
+        </div>
+
+      </div>
+    </div>
+
   </div>
-
-
-  </div>
-
-
-
 </div>
-
 
 
 
