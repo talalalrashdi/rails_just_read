@@ -3,6 +3,7 @@ require "open-uri"
 # Clearing db tables
 puts "start - destroying all existing db records..."
 Review.destroy_all
+Request.destroy_all
 Book.destroy_all
 User.destroy_all
 Category.destroy_all
@@ -26,6 +27,14 @@ image4 = URI.parse("https://res.cloudinary.com/dovux98py/image/upload/v174844413
 image5 = URI.parse("https://res.cloudinary.com/dovux98py/image/upload/v1748444137/Harry-Potter-1-y-la-piedra-filosofal_h1yhkt.jpg").open
 image6 = URI.parse("https://res.cloudinary.com/dovux98py/image/upload/v1748444138/Harry-Potter-and-the-Philosophers-Stone_cd8yyt.jpg").open
 
+puts "pulling profile pictures from cloudinary..."
+profile1 = URI.parse("https://res.cloudinary.com/dovux98py/image/upload/v1748613283/profile_pic_6_jqafo1.jpg").open
+profile2 = URI.parse("https://res.cloudinary.com/dovux98py/image/upload/v1748613283/profile_pic_2_rdmnrd.jpg").open
+profile3 = URI.parse("https://res.cloudinary.com/dovux98py/image/upload/v1748613283/profile_pic_4_lexn0h.jpg").open
+profile4 = URI.parse("https://res.cloudinary.com/dovux98py/image/upload/v1748613283/profile_pic_3_wm0l63.jpg").open
+profile5 = URI.parse("https://res.cloudinary.com/dovux98py/image/upload/v1748613283/profile_pic_5_lv6huj.jpg").open
+profile6 = URI.parse("https://res.cloudinary.com/dovux98py/image/upload/v1748613282/profile_pic_1_fndeir.jpg").open
+
 # User
 puts "creating demo users..."
 user1 = User.create!(email: "example1@mail.com", password: "111111", full_name: "Edgar Allan Poe", address: "840 Summer St, South Boston, MA 02127, United States")
@@ -34,6 +43,15 @@ user3 = User.create!(email: "example3@mail.com", password: "333333", full_name: 
 user4 = User.create!(email: "example4@mail.com", password: "444444", full_name: "Claire Dendon", address: "206 Clarendon St, Boston, MA 02116, United States")
 user5 = User.create!(email: "example5@mail.com", password: "555555", full_name: "Maria Stuart", address: "420 D St, Boston, MA 02210, United States")
 user6 = User.create!(email: "example6@mail.com", password: "666666", full_name: "Charles Reed", address: "1005 Columbia Rd, Boston, MA 02127, United States")
+
+# Attaching images to users
+puts "attaching profile pictures to users..."
+user1.photo.attach(io: profile1, filename: "profile_picture.png", content_type: "image/png")
+user2.photo.attach(io: profile2, filename: "profile_picture.png", content_type: "image/png")
+user3.photo.attach(io: profile3, filename: "profile_picture.png", content_type: "image/png")
+user4.photo.attach(io: profile4, filename: "profile_picture.png", content_type: "image/png")
+user5.photo.attach(io: profile5, filename: "profile_picture.png", content_type: "image/png")
+user6.photo.attach(io: profile6, filename: "profile_picture.png", content_type: "image/png")
 
 # Creating books
 puts "creating book instances..."
@@ -53,26 +71,24 @@ book4.photo.attach(io: image4, filename: "book_cover.png", content_type: "image/
 book5.photo.attach(io: image5, filename: "book_cover.png", content_type: "image/png")
 book6.photo.attach(io: image6, filename: "book_cover.png", content_type: "image/png")
 
+# Requests
+puts "creating book requests"
+request1 = Request.create(user: user1, book: book1, status: rand(0..3))
+request2 = Request.create(user: user1, book: book2, status: rand(0..3))
+request3 = Request.create(user: user1, book: book3, status: rand(0..3))
+request4 = Request.create(user: user2, book: book4, status: rand(0..3))
+request5 = Request.create(user: user2, book: book5, status: rand(0..3))
+request6 = Request.create(user: user2, book: book6, status: rand(0..3))
+
 # Reviews
 puts "creating review instances..."
-Review.create(content: "Great book! The condition of the book is also great!", rating: rand(1..5), user: user1)
-Review.create(content: "I love this book! The condition of the book is also great!", rating: rand(1..5), user: user1)
-Review.create(content: "Nice", rating: rand(1..5), user: user1)
-Review.create(content: "Not bad", rating: rand(1..5), user: user1)
-Review.create(content: "I love this book, would definitely borrow more", rating: rand(1..5), user: user1)
-Review.create(content: "Nice experience, I will borrow more books!", rating: rand(1..5), user: user1)
-Review.create(content: "It was nice", rating: rand(1..5), user: user1)
+Review.create(content: "Great book! The condition of the book is also great!", rating: rand(1..5), user: user1, request: request1)
+Review.create(content: "I love this book! The condition of the book is also great!", rating: rand(1..5), user: user1, request: request2)
+Review.create(content: "Nice", rating: rand(1..5), user: user1, request: request3)
 
-
-
-puts "creating review instances..."
-Review.create(content: "Great book! The condition of the book is also great!", rating: rand(1..5), user: user2)
-Review.create(content: "I love this book! The condition of the book is also great!", rating: rand(1..5), user: user2)
-Review.create(content: "Nice", rating: rand(1..5), user: user3)
-Review.create(content: "Not bad", rating: rand(1..5), user: user3)
-Review.create(content: "I love this book, would definitely borrow more", rating: rand(1..5), user: user4)
-Review.create(content: "Nice experience, I will borrow more books!", rating: rand(1..5), user: user4)
-Review.create(content: "It was nice", rating: rand(1..5), user: user5)
+Review.create(content: "Not bad", rating: rand(1..5), user: user2, request: request4)
+Review.create(content: "I love this book, would definitely borrow more", rating: rand(1..5), user: user2, request: request5)
+Review.create(content: "Nice experience, I will borrow more books!", rating: rand(1..5), user: user2, request: request6)
 
 # Message
 puts "created #{Category.count} categories, #{User.count} users, #{Book.count} books, #{Review.count} reviews."
