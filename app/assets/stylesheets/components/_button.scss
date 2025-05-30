@@ -29,3 +29,17 @@ background-image: linear-gradient(to right, #50C9C3 0%, #96DEDA 51%, #50C9C3 100
     display: block;
     text-decoration: none;
  }
+
+
+  .btn-log-out{
+background-image: linear-gradient(to right, #c95250 0%, #deaf96 51%, #c96850 100%);
+    padding: 15px 15px 15px 15px;
+    text-align: center;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    box-shadow: 0 0 20px #eee;
+    border-radius: 8px;
+    display: block;
+    text-decoration: none;
+ }

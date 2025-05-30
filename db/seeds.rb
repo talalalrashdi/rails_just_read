@@ -63,6 +63,20 @@ Review.create(content: "I love this book, would definitely borrow more", rating:
 Review.create(content: "Nice experience, I will borrow more books!", rating: rand(1..5), user: user1)
 Review.create(content: "It was nice", rating: rand(1..5), user: user1)
 
+
+
+puts "creating review instances..."
+Review.create(content: "Great book! The condition of the book is also great!", rating: rand(1..5), user: user2)
+Review.create(content: "I love this book! The condition of the book is also great!", rating: rand(1..5), user: user2)
+Review.create(content: "Nice", rating: rand(1..5), user: user3)
+Review.create(content: "Not bad", rating: rand(1..5), user: user3)
+Review.create(content: "I love this book, would definitely borrow more", rating: rand(1..5), user: user4)
+Review.create(content: "Nice experience, I will borrow more books!", rating: rand(1..5), user: user4)
+Review.create(content: "It was nice", rating: rand(1..5), user: user5)
+
+
+
+
 # Multi-Search
 puts "Rebuilding multi-search table for books and categories..."
 PgSearch::Multisearch.rebuild(Book)

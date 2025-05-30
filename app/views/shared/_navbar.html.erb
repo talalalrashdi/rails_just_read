@@ -4,7 +4,16 @@
   </a>
 
   <div class="ms-auto d-inline-flex align-middle ">
+    <% if user_signed_in? %>
+    <div class="name-margin-righ">
+     <p class="welcome-name-bold">Welcome 👋</p>
+    <%= current_user.full_name %>
+    </div>
+
+    <%= link_to "sign out",  destroy_user_session_path , class:"btn-log-out" , data: { turbo_method: :delete } %>
+      <% else  %>
     <%= link_to "log in",  new_user_session_path , class:"btn-login" %>
-    <p class="ms-4"> <b>hi,</b> Talal</p>
+    <% end%>
   </div>
+
 </nav>
