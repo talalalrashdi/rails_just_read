@@ -43,6 +43,11 @@
   box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px;
 }
 
+.show_owner_info, a:link, a:visited{
+  text-decoration: none;
+  color: black;
+}
+
 .btn-my-color{
   background-color:#9edcda;
   margin-left: 10px;

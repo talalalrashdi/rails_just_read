@@ -1,5 +1,18 @@
 .search-bar{
-
 background-color: white;
  border-radius: 8px;
+}
+
+.btn-primary{
+  background-color: #9edcda;
+  border-style: none;
+  color: black;
+}
+
+.btn-primary:hover{
+  background-color:#baeae8;
+}
+
+.category-input{
+  padding: 7px 0;
 }

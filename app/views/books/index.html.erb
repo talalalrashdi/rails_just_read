@@ -3,31 +3,36 @@
     <div class="d-flex d-grid gap-1 pr-4 mb-5">
 
       <!-- START: multi-search form -->
-      <div class="row justify-content-center">
-        <div class="col-sm-8 my-3">
+      <div class="">
+        <div class="">
           <%= form_with url: books_path, method: :get, class: "d-flex" do %>
             <%= text_field_tag :query,
                   params[:query],
-                  class: "form-control",
-                  placeholder: "Search for a title, author, category or keyword"
+                  class: "",
+                  placeholder: "Search by keyword"
               %>
-            <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
+            <%= submit_tag "Search", name: "", class: "btn btn-primary mx-1" %>
           <% end %>
         </div>
       </div>
       <!-- END: multi-search form -->
 
-      <input type="text" placeholder="area"  class="form-control w-25">
-      <button type="button  " class="btn search-background">Search</button>
+      <input type="text" placeholder="Area"  class="">
+      <button type="button" class="btn btn-primary">Search</button>
 
       <!-- START: category filter -->
+
+      <div>
       <%= form_with url: books_path, method: :get, local: true do %>
         <%= select_tag :category_id,
             options_from_collection_for_select(Category.all, :id, :name, params[:category_id]),
             prompt: "Select Category",
-            onchange: 'this.form.submit();'
+            onchange: 'this.form.submit();',
+            class: "category-input"
         %>
       <% end %>
+      </div>
+
       <!-- END: category filter -->
 
     </div>
@@ -41,7 +46,7 @@
             <%= cl_image_tag book.photo.key %>
               <div class="card-body">
                 <h5 class="card-title"><%= book.title %></h5>
-                <p class="card-text grey-color "> <%= book.description %></p>
+                <p class="card-text grey-color "> <%= book.author %></p>
               </div>
             <% end %>
           <% end %>

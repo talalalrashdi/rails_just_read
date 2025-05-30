@@ -1,2 +1,4 @@
-<h2><%= book.title %></h2>
-<p><%= book.user.address %></p>
+<%= link_to book_path(book), class: "" do %>
+  <h2><%= book.title %></h2>
+  <p><%= book.user.address %></p>
+<% end %>
