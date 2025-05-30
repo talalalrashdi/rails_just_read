@@ -74,13 +74,5 @@ Review.create(content: "I love this book, would definitely borrow more", rating:
 Review.create(content: "Nice experience, I will borrow more books!", rating: rand(1..5), user: user4)
 Review.create(content: "It was nice", rating: rand(1..5), user: user5)
 
-
-
-
-# Multi-Search
-puts "Rebuilding multi-search table for books and categories..."
-PgSearch::Multisearch.rebuild(Book)
-PgSearch::Multisearch.rebuild(Category)
-
 # Message
 puts "created #{Category.count} categories, #{User.count} users, #{Book.count} books, #{Review.count} reviews."
