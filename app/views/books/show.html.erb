@@ -17,7 +17,7 @@
       <%= link_to profile_path(id: @book.user) do %>
         <div class="col-12 show_index_grid show_owner_card">
           <div class="show_avatar">
-            <% <%= cl_image_tag @book.user.photo.key %>
+            <%= cl_image_tag @book.user.photo.key %>
           </div>
           <div class="show_owner_info">
             <h5><%= @book.user.full_name %></h5>
