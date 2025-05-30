@@ -26,7 +26,7 @@
             options_from_collection_for_select(Category.all, :id, :name, params[:category_id]),
             prompt: "Select Category",
             onchange: 'this.form.submit();'
-           %>
+        %>
       <% end %>
       <!-- END: category filter -->
 
@@ -37,15 +37,15 @@
     <div class="index_grid">
       <% if @books.any? %>
         <% @books.each do |book| %>
-          <div class="card m-2" >
+          <%= link_to book_path(book), class: "card m-2" do %>
             <%= cl_image_tag book.photo.key %>
-            <div class="card-body">
-              <h5 class="card-title"><%= book.title %></h5>
-              <p class="card-text grey-color "> <%= book.description %></p>
-            </div>
-          </div>
-        <% end %>
-      <% else %>
+              <div class="card-body">
+                <h5 class="card-title"><%= book.title %></h5>
+                <p class="card-text grey-color "> <%= book.description %></p>
+              </div>
+            <% end %>
+          <% end %>
+        <% else %>
         <em>Sorry, no books found.</em>
       <% end %>
     </div>
