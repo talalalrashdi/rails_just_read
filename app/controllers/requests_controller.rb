@@ -1,26 +1,27 @@
 class RequestsController < ApplicationController
-  # controller actions to set requests
+  # controller actions to set book request status
   def create
-    request = Request.find(params[:id])
+    # look if there is an existing request of this user/book combination
+    # and only create a new one, if it has expired
+    if Request.find_by(book_id: params[:book_id], user_id: params[:user_id]) && Request.find_by(book_id: params[:book_id], user_id: params[:user_id]).expired?
+      request = Request.find_by(book_id: params[:book_id], user_id: params[:user_id])
+    else
+      request = Request.new(book_id: params[:book_id], user_id: params[:user_id])
+    end
+    # set the request status to 'pending'
     request.update(status: :pending)
-    redirect_to requests_path, notice: "Request created."
+    redirect_to dashboard_path, notice: "Request created."
   end
 
   def accept
-    request = Request.find(params[:id])
-    request.update(status: :accepted)
-    redirect_to requests_path, notice: "Request accepted."
+    redirect_to dashboard_path, notice: "Request accepted."
   end
 
   def reject
-    request = Request.find(params[:id])
-    request.update(status: :declined)
-    redirect_to requests_path, alert: "Request declined."
+    redirect_to dashboard_path, alert: "Request declined."
   end
 
   def expire
-    request = Request.find(params[:id])
-    request.update(status: :expired)
-    redirect_to requests_path, alert: "Request marked as expired."
+    redirect_to dashboard_path, alert: "Request marked as expired."
   end
 end

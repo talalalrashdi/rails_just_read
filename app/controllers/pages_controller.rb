@@ -5,5 +5,10 @@ class PagesController < ApplicationController
   end
 
   def dashboard
+    @requests_pending = Request.joins(:book).where(books: { user_id: current_user.id }, status: :pending)
+    @requests_accepted = Request.joins(:book).where(books: { user_id: current_user.id }, status: :accepted)
+    @requests_declined = Request.joins(:book).where(books: { user_id: current_user.id }, status: :rejected)
+    @requests_expired = Request.joins(:book).where(books: { user_id: current_user.id }, status: :expired)
+    @my_requests = Request.where(user_id: current_user.id, status: :accepted)
   end
 end
