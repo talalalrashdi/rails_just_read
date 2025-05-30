@@ -9,8 +9,12 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
-  resources :books, only: [:index, :show, :new, :create]
+  resources :books, only: [:index, :show]
   get "profile", to: "pages#profile"
   get "profile/:id", to: "pages#profile"
   get "dashboard", to: "pages#dashboard"
+  post "requests", to: "requests#create", as: "request_create"
+  post "requests", to: "requests#accept", as: "request_accept"
+  post "requests", to: "requests#reject", as: "request_reject"
+  post "requests", to: "requests#expire", as: "request_expire"
 end

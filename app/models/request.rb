@@ -3,7 +3,11 @@ class Request < ApplicationRecord
   belongs_to :book
   belongs_to :user
 
-  # validations
-  validates :status, numericality: { only_integer: true }
-
+  # request status
+  enum status: {
+    pending: 0,
+    accepted: 1,
+    declined: 2,
+    expired: 3
+  }
 end
