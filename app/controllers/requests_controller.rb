@@ -1,4 +1,5 @@
 class RequestsController < ApplicationController
+  # controller actions to set requests
   def create
     request = Request.find(params[:id])
     request.update(status: :pending)
