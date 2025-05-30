@@ -2,12 +2,53 @@
   <div class="row">
     <%= link_to "Back to search", books_path, class: "link-body-emphasis link-offset-2 link-underline-opacity-25 link-underline-opacity-75-hover pb-2" %>
 
-    <div class="col-12">
-      <%= link_to "Borrow this book", books_path, type: "button", class: "btn btn-my-color" %>
+    <div class="col-6 mb-4">
+      <h2>Requests for my books</h2>
+
+      <% @requests_pending.each do |request| %>
+        <div class="card-product mb-2">
+          <%= cl_image_tag request.book.photo.key %>
+            <div class="card-product-infos">
+            <h2><%= link_to request.user.full_name, profile_path(request.user) %> sent you a request.</h2>
+            <p>Do you want to lend <strong><%= request.book.title %>?</strong></p>
+            <div class="">
+              <%= button_to "Accept", request_accept_path(request), method: :post, class: "btn btn-sm btn-success" %>
+              <%= button_to "Decline", request_reject_path(request), method: :post, class: "btn btn-sm btn-danger" %>
+            </div>
+          </div>
+        </div>
+      <% end %>
     </div>
 
-    <div class="col-12">
-      <%= link_to "Borrow this book", books_path, type: "button", class: "btn btn-my-color" %>
+    <div class="col-6 mb-4">
+      <h2>Books, I have lent</h2>
+
+      <% @requests_accepted.each do |request| %>
+        <div class="card-product mb-2">
+          <%= cl_image_tag request.book.photo.key %>
+            <div class="card-product-infos">
+            <h2>You have lent <%= request.book.title %> to <%= link_to request.user.full_name, profile_path(request.user) %></h2>
+            <p>Do you want to <strong>mark it as returned?</strong></p>
+            <div class="">
+              <%= button_to "Returned", request_expire_path(request), method: :post, class: "btn btn-sm btn-success" %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="col-6 mb-4">
+      <h2>Books, I need to return</h2>
+
+      <% @my_requests.each do |request| %>
+        <div class="card-product mb-2">
+          <%= cl_image_tag request.book.photo.key %>
+            <div class="card-product-infos">
+            <h2><%= request.book.title %></h2>
+            <p>Don't forget to return this book to <%= link_to request.user.full_name, profile_path(request.user) %></p>
+          </div>
+        </div>
+      <% end %>
     </div>
 
   </div>
