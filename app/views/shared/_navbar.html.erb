@@ -9,8 +9,9 @@
      <p class="welcome-name-bold">Welcome 👋</p>
     <%= current_user.full_name %>
     </div>
-
+    <%= link_to "Dashboard",  dashboard_path , class:"btn-dashboard" %>
     <%= link_to "sign out",  destroy_user_session_path , class:"btn-log-out" , data: { turbo_method: :delete } %>
+
       <% else  %>
     <%= link_to "log in",  new_user_session_path , class:"btn-login" %>
     <% end%>

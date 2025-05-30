@@ -43,3 +43,18 @@ background-image: linear-gradient(to right, #c95250 0%, #deaf96 51%, #c96850 100
     display: block;
     text-decoration: none;
  }
+
+ .btn-dashboard{
+
+  background-image: linear-gradient(to right, #bef7d5 0%, #96decd 51%, #50c99d 100%);
+    padding: 15px 15px 15px 15px;
+    text-align: center;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    box-shadow: 0 0 20px #eee;
+    border-radius: 8px;
+    display: block;
+    text-decoration: none;
+    margin-right: 15px;
+ }

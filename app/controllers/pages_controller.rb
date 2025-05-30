@@ -3,8 +3,8 @@ class PagesController < ApplicationController
 
   def profile
 
-    @user = current_user
-    @userid =  current_user.id
+
+    @user = User.find(params[:id])
 
     @books = current_user.books
 
