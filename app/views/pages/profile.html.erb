@@ -6,8 +6,9 @@
 
     </div>
     <div class="col">
-      <p class="ratting-number-bold">Talal Alrashdi</p>
-      <p class="ratting-name-lighter">address</p>
+
+      <p class="ratting-number-bold"> <%= @user.full_name%> </p>
+      <p class="ratting-name-lighter"> <%= @user.address %> </p>
     </div>
     <div class="col-auto">
         <div class="rating-bckground text-center">
@@ -20,6 +21,17 @@
 
   <h1 class="mt-5">Review</h1>
 
+  <ul>
+
+    <% @review.each do |r|%>
+    <li>
+      <%= r.content %>
+      <%= r.rating%>
+    </li>
+  <% end %>
+  </ul>
+
+
   <div class="scrolling-wrapper">
 
         <%= render "pages/review-card"%>
@@ -27,8 +39,11 @@
   </div>
 
 
+
   <h1 class="mt-5">Books</h1>
 
-  <%= render "pages/personal-book"%>
+  <%= render partial: "pages/personal-book"%>
+
+
 
 </div>
